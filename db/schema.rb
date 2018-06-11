@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170430213751) do
     t.integer  "quantity"
     t.boolean  "status"
     t.date     "expire_at"
+    t.string   "reason"
     t.integer  "item_id"
     t.integer  "member_id"
     t.datetime "created_at", null: false
