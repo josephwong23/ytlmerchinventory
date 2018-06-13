@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
     redirect_to :root, notice: 'Renewed for 7 days from now. Enjoy!'
 
-    send_notification_email_for_action(:renew)
+    # send_notification_email_for_action(:renew)
   end
 
   def toggle_deliver
@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
 
     redirect_to :root, notice: 'Item marked as returned. Thank you!'
 
-    send_notification_email_for_action(:return)
+    # send_notification_email_for_action(:return)
   end
 
   def new
@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
     if @order.save && @order.item.decrement!(:remaining_quantity, @order.quantity)
       redirect_to :root, notice: 'Order was successfully created.'
 
-      send_notification_email_for_action(:create)
+      # send_notification_email_for_action(:create)
     else
       render :new
     end
@@ -64,7 +64,7 @@ class OrdersController < ApplicationController
 
     redirect_to orders_url, notice: 'Order was successfully destroyed.'
 
-    send_notification_email_for_action(:cancel)
+    # send_notification_email_for_action(:cancel)
   end
 
   #######
