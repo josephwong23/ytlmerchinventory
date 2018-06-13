@@ -16,6 +16,11 @@ class Order < ApplicationRecord
     order.update(expire_at: 7.days.from_now)
   end
 
+  def self.toggle_delivery_status(id)
+    order = Order.find(id)
+    order.update(delivery_status: !order.delivery_status)
+  end
+
   def self.disable(id)
     order = Order.where(id: id)
     order.update(status: false)

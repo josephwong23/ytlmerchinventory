@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.boolean :status
       t.date :expire_at
       t.string :reason
+      t.boolean :delivery_status, default: false
       t.references :item, foreign_key: true
       t.references :member, foreign_key: true
 

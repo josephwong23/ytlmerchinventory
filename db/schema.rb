@@ -50,10 +50,11 @@ ActiveRecord::Schema.define(version: 20170430213751) do
     t.boolean  "status"
     t.date     "expire_at"
     t.string   "reason"
+    t.boolean  "delivery_status", default: false
     t.integer  "item_id"
     t.integer  "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["member_id"], name: "index_orders_on_member_id"
   end

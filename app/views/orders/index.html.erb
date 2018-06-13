@@ -95,6 +95,7 @@
                       <th>Return By</th>
                       <th>Borrowed By</th>
                       <th>Reason</th>
+                      <th>Delivery Status</th>
                       <th>
                         <i class="ion ion-log-in"></i>
                       </th>
@@ -128,6 +129,10 @@
                         </td>
                         <td>
                           <%= order.reason %>
+                        </td>
+                        <td>
+                          <%= order.delivery_status ? 'Yes' : 'No' %>
+                          <%= link_to '(Toggle)', { :controller => :orders, :action => :toggle_deliver, :id => order.id }, { class: 'toggle-text' } %>
                         </td>
                         <td>
                           <%= link_to '', { :controller => :orders, :action => :disable, :id => order.id }, { class: 'ion ion-log-in' } %>

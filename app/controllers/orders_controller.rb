@@ -21,6 +21,12 @@ class OrdersController < ApplicationController
     send_notification_email_for_action(:renew)
   end
 
+  def toggle_deliver
+    Order.toggle_delivery_status(params[:id])
+
+    redirect_to :root, notice: 'Updated Delivery Status'
+  end
+
   def disable
     Order.disable(@order.id) && @order.item.increment!(:remaining_quantity, @order.quantity)
 
@@ -70,7 +76,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:quantity, :expire_at, :status, :item_id, :member_id, :reason)
+    params.require(:order).permit(:quantity, :expire_at, :status, :item_id, :member_id, :reason, :delivery_status)
   end
 
   def order_mailer_params

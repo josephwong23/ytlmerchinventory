@@ -1,2 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.toggle-text {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: .85em;
+  margin-left: .2em;
+}
