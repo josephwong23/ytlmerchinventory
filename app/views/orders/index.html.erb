@@ -91,6 +91,7 @@
                     <tr>
                       <th>Description</th>
                       <th>Qty</th>
+                      <th>Borrowed On</th>
                       <th>Return By</th>
                       <th>Borrowed By</th>
                       <th>Reason</th>
@@ -112,6 +113,7 @@
                           <%= order.item.name %>
                         </td>
                         <td><%= order.quantity %></td>
+                        <td><%= order.created_at.strftime('%Y-%m-%d') %></td>
                         <% if order.expire_at.strftime('%y:%m:%d') >= Date.today.strftime('%y:%m:%d') %>
                           <td>
                             <%= order.expire_at %>
