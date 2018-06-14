@@ -91,19 +91,21 @@
                     <tr>
                       <th>Description</th>
                       <th>Qty</th>
-                      <th>Borrowed On</th>
-                      <th>Return By</th>
-                      <th>Borrowed By</th>
+                      <th>Order Date</th>
+                      <!-- <th>Return By</th> -->
+                      <th>Orderer</th>
                       <th>Reason</th>
                       <th>Delivery Status</th>
                       <th>
-                        <i class="ion ion-log-in"></i>
+                        Return
                       </th>
+                      <!--
                       <th>
                         <i class="ion ion-loop"></i>
                       </th>
+                      -->
                       <th>
-                        <i class="ion ion-trash-b"></i>
+                        Delete
                       </th>
                     </tr>
                   </thead>
@@ -115,6 +117,7 @@
                         </td>
                         <td><%= order.quantity %></td>
                         <td><%= order.created_at.strftime('%Y-%m-%d') %></td>
+                        <!--
                         <% if order.expire_at.strftime('%y:%m:%d') >= Date.today.strftime('%y:%m:%d') %>
                           <td>
                             <%= order.expire_at %>
@@ -124,6 +127,7 @@
                             <%= order.expire_at %>
                           </td>
                         <% end %>
+                        -->
                         <td>
                           <%= order.member.name %>
                         </td>
@@ -137,9 +141,11 @@
                         <td>
                           <%= link_to '', { :controller => :orders, :action => :disable, :id => order.id }, { class: 'ion ion-log-in' } %>
                         </td>
+                        <!--
                         <td>
                           <%= link_to '', { :controller => :orders, :action => :renew, :id => order.id }, { class: 'ion ion-loop' } %>
                         </td>
+                        -->
                         <td>
                           <%= link_to order, method: :delete, data: { confirm: 'Are you sure? If you are trying to return an item it is recommended to use the "return" button.' } do %>
                             <i class="ion ion-trash-b"></i>
