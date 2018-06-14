@@ -96,16 +96,18 @@
                       <th>Orderer</th>
                       <th>Reason</th>
                       <th>Delivery Status</th>
+                      <!--
                       <th>
-                        Return
+                        <i class="ion ion-log-in"></i>
                       </th>
+                      -->
                       <!--
                       <th>
                         <i class="ion ion-loop"></i>
                       </th>
                       -->
                       <th>
-                        Delete
+                        <i class="ion ion-trash-b"></i>
                       </th>
                     </tr>
                   </thead>
@@ -138,16 +140,18 @@
                           <%= order.delivery_status ? 'Yes' : 'No' %>
                           <%= link_to '(Toggle)', { :controller => :orders, :action => :toggle_deliver, :id => order.id }, { class: 'toggle-text' } %>
                         </td>
+                        <!--
                         <td>
                           <%= link_to '', { :controller => :orders, :action => :disable, :id => order.id }, { class: 'ion ion-log-in' } %>
                         </td>
+                        -->
                         <!--
                         <td>
                           <%= link_to '', { :controller => :orders, :action => :renew, :id => order.id }, { class: 'ion ion-loop' } %>
                         </td>
                         -->
                         <td>
-                          <%= link_to order, method: :delete, data: { confirm: 'Are you sure? If you are trying to return an item it is recommended to use the "return" button.' } do %>
+                          <%= link_to order, method: :delete, data: { confirm: 'Are you sure?' } do %>
                             <i class="ion ion-trash-b"></i>
                           <% end %>
                         </td>
