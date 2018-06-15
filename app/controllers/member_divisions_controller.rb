@@ -1,0 +1,2 @@
+class MemberDivisionsController < ApplicationController
+end

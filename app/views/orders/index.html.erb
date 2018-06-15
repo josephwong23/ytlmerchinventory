@@ -175,6 +175,7 @@
                 <table class="table table-bordered table-hover">
                   <tr>
                     <th>Name</th>
+                    <th>Division</th>
                     <th>E-mail</th>
                     <th>Phone</th>
                     <th>
@@ -187,6 +188,7 @@
                   <% members.each do |member| %>
                     <tr>
                       <td><%= member.name %></td>
+                      <td><%= member.member_division ? member.member_division.name : '-'%></td>
                       <td><%= member.email %></td>
                       <td><%= member.phone %></td>
                       <td><%= link_to '', edit_member_path(member), { class: 'ion ion-edit' } %></td>

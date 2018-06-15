@@ -1,4 +1,5 @@
 class Member < ApplicationRecord
+  belongs_to :member_division
   has_many :orders
   has_many :items, through: :orders
 

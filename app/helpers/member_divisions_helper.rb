@@ -1,0 +1,2 @@
+module MemberDivisionsHelper
+end

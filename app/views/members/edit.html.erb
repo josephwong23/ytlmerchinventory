@@ -40,6 +40,10 @@
 
               <div class="box-body">
                 <div class="form-group">
+                  <label>Member Division</label><br/>
+                  <%= f.select(:member_division_id, MemberDivision.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Please select your division', :selected => @member.member_division_id}) %>
+                </div>
+                <div class="form-group">
                   <label>Full Name</label>
                   <%= f.text_field :name, autocomplete: 'off', placeholder: 'Enter Full Name', class: 'form-control', required: true %>
                 </div>

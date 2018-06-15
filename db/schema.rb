@@ -37,12 +37,20 @@ ActiveRecord::Schema.define(version: 20170423144447) do
     t.integer  "remaining_quantity"
   end
 
+  create_table "member_divisions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "member_division_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["member_division_id"], name: "index_members_on_member_division_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -61,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170423144447) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.integer  "member_division_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -74,6 +83,7 @@ ActiveRecord::Schema.define(version: 20170423144447) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["member_division_id"], name: "index_users_on_member_division_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
