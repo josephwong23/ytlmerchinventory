@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20170423144447) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -29,12 +35,13 @@ ActiveRecord::Schema.define(version: 20170423144447) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.string   "category"
     t.integer  "quantity"
     t.text     "description"
+    t.integer  "category_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "remaining_quantity"
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "member_divisions", force: :cascade do |t|

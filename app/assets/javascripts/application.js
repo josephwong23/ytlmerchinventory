@@ -33,4 +33,33 @@ $(document).ready(function() {
     },
     sortField: 'text'
   });
+
+  $('#selectize_category').selectize({
+    create: function(input, callback) {
+      $.ajax({
+        url: '/categories',
+        method: 'post',
+        data: {
+          category: {
+            name: input
+          }
+        },
+        success: function(data) {
+          toastr.success("You've added new category: " + data.response.name)
+          callback({
+            value: data.response.id,
+            text: data.response.name
+          })
+        },
+        error: function() {
+          toastr.error("The category you're trying to add already existed. Please select from the dropdown.")
+          callback({
+            value: null,
+            text: 'Try Again'
+          })
+        }
+      })
+    },
+    sortField: 'text'
+  });
 })

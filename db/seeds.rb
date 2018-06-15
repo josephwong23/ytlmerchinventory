@@ -5,6 +5,10 @@ MemberDivision.create(name: 'YTL Cement')
 MemberDivision.create(name: 'YTL Power')
 MemberDivision.create(name: 'YTL Digital')
 
+Category.create(name: 'Electronic')
+Category.create(name: 'Hardware')
+Category.create(name: 'Books')
+
 User.create([{
   name: 'Demo Account',
   email: 'demo@demo.com',

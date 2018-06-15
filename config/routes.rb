@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :items
   resources :member_divisions, only: [:create]
+  resources :categories, only: [:create]
 
   root 'orders#index'
   get 'renew/:id' => 'orders#renew'

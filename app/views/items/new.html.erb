@@ -56,12 +56,8 @@
                     <%= f.number_field :quantity, class: 'form-control', placeholder: 'Enter Quantity', required: true %>
                   </div>
                   <div class="form-group">
-                    <label>Category</label>
-                    <%= f.select :category,
-                                 [['Books', 'Books'], ['Magazines', 'Magazines'], ['Electronics', 'Electronics'],
-                                  ['Hardware', 'Hardware'], ['Tools', 'Tools']],
-                                 {},
-                                 { :class => 'form-control' } %>
+                    <label>Category</label><br/>
+                    <%= f.select(:category_id, Category.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Please select/add a category', :selected => @item.category_id}, :id => 'selectize_category') %>
                   </div>
                 </div>
                 <!-- /.box-body -->
