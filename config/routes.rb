@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   resources :members
   resources :users
   resources :items
+  resources :member_divisions, only: [:create]
 
   root 'orders#index'
   get 'renew/:id' => 'orders#renew'
   get 'return/:id' => 'orders#disable'
   get 'toggle_deliver/:id' => 'orders#toggle_deliver'
   get 'past_orders' => 'orders#old'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

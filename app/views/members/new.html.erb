@@ -40,7 +40,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>Member Division</label><br/>
-                  <%= f.select(:member_division_id, MemberDivision.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Please select your division', :selected => @member.member_division_id}) %>
+                  <%= f.select(:member_division_id, MemberDivision.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Please select/add your Member Division', :selected => @member.member_division_id}, :id => 'selectize_member_division') %>
                 </div>
                 <div class="form-group">
                   <label>Full Name</label>

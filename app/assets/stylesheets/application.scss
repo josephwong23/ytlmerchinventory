@@ -1,5 +1,7 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'selectize';
+@import 'selectize.bootstrap3';
 
 .toggle-text {
   text-decoration: underline;

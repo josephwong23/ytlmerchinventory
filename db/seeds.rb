@@ -6,6 +6,13 @@ MemberDivision.create(name: 'YTL Power')
 MemberDivision.create(name: 'YTL Digital')
 
 User.create([{
+  name: 'Demo Account',
+  email: 'demo@demo.com',
+  password: "change_me",
+  remember_created_at: nil
+}])
+
+User.create([{
   name: 'Joseph Wong',
   email: 'joseph@ytl.com',
   password: "qwe123",
