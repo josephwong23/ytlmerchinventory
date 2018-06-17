@@ -63,7 +63,8 @@ ActiveRecord::Schema.define(version: 20170423144447) do
   create_table "orders", force: :cascade do |t|
     t.integer  "quantity"
     t.boolean  "status"
-    t.date     "expire_at"
+    t.date     "deliver_by"
+    t.date     "order_date"
     t.string   "reason"
     t.boolean  "delivery_status", default: false
     t.integer  "item_id"

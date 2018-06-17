@@ -92,7 +92,7 @@
                       <th>Description</th>
                       <th>Qty</th>
                       <th>Order Date</th>
-                      <!-- <th>Deliver by</th> -->
+                      <th>Deliver by</th>
                       <th>Orderer</th>
                       <th>Reason</th>
                       <th>Delivery Status</th>
@@ -118,18 +118,16 @@
                           <%= order.item.name %>
                         </td>
                         <td><%= order.quantity %></td>
-                        <td><%= order.created_at.strftime('%Y-%m-%d') %></td>
-                        <!--
-                        <% if order.expire_at.strftime('%y:%m:%d') >= Date.today.strftime('%y:%m:%d') %>
+                        <td><%= order.order_date.strftime('%Y-%m-%d') %></td>
+                        <% if order.deliver_by.strftime('%y:%m:%d') >= Date.today.strftime('%y:%m:%d') %>
                           <td>
-                            <%= order.expire_at %>
+                            <%= order.deliver_by %>
                           </td>
                         <% else %>
                           <td style="color:red;">
-                            <%= order.expire_at %>
+                            <%= order.deliver_by %>
                           </td>
                         <% end %>
-                        -->
                         <td>
                           <%= order.member.name %>
                         </td>

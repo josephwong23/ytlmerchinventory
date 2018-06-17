@@ -3,17 +3,18 @@ class Order < ApplicationRecord
   belongs_to :member
 
   validates :quantity, presence: true
-  validates :expire_at, presence: true
+  validates :order_date, presence: true
+  validates :deliver_by, presence: true
   validates :item_id, presence: true
   validates :member_id, presence: true
 
   scope :active, -> { where(status: true) }
   scope :inactive, -> { where(status: false) }
-  scope :expired, -> { where('expire_at < ?', Date.today) }
+  scope :expired, -> { where('deliver_by < ?', Date.today) }
 
   def self.renew(id)
     order = Order.where(id: id)
-    order.update(expire_at: 7.days.from_now)
+    order.update(deliver_by: 7.days.from_now)
   end
 
   def self.toggle_delivery_status(id)

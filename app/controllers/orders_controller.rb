@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:quantity, :expire_at, :status, :item_id, :member_id, :reason, :delivery_status)
+    params.require(:order).permit(:quantity, :deliver_by, :order_date, :status, :item_id, :member_id, :reason, :delivery_status)
   end
 
   def order_mailer_params

@@ -20,7 +20,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create order' do
     assert_difference('Order.count') do
-      post orders_url, params: { order: { expire_at: @order.expire_at, quantity: @order.quantity, item_id: Item.first.id, member_id: Member.first.id } }
+      post orders_url, params: { order: { deliver_by: @order.deliver_by, quantity: @order.quantity, item_id: Item.first.id, member_id: Member.first.id } }
     end
 
     assert_redirected_to root_url

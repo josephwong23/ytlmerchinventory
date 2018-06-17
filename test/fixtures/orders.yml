@@ -3,11 +3,11 @@
 one:
   id: 1
   quantity: 5
-  expire_at: 2017-03-25
+  deliver_by: 2017-03-25
   item_id: 1
   member_id: 1
 
 two:
   id: 2
   quantity: 10
-  expire_at: 2017-03-25
+  deliver_by: 2017-03-25

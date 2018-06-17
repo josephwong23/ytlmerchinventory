@@ -3,7 +3,8 @@ class CreateOrders < ActiveRecord::Migration[5.0]
     create_table :orders do |t|
       t.integer :quantity
       t.boolean :status
-      t.date :expire_at
+      t.date :deliver_by
+      t.date :order_date
       t.string :reason
       t.boolean :delivery_status, default: false
       t.references :item, foreign_key: true
