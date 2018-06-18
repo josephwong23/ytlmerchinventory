@@ -21,26 +21,12 @@
 
       <!-- Main content -->
       <section class="content">
-        <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-aqua">
-              <div class="inner">
-                <h3><%= items.sum(:quantity) %></h3>
-                <p>Items Tracked</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-search"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
+
+          <div class="col-xs-6">
             <div class="small-box bg-green">
               <div class="inner">
-                <h3><%= items.sum(:remaining_quantity) %></h3>
+                <h3><%= Item.count %></h3>
                 <p>Items Available</p>
               </div>
               <div class="icon">
@@ -48,35 +34,20 @@
               </div>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
+
+          <div class="col-xs-6">
             <div class="small-box bg-red">
               <div class="inner">
-                <h3><%= (items.sum(:quantity) - items.sum(:remaining_quantity)) %></h3>
-                <p>Items Unavailable</p>
+                <h3><%= Order.where(delivery_status: false).count %></h3>
+                <p>Pending Orders</p>
               </div>
               <div class="icon">
                 <i class="ion ion-alert"></i>
               </div>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-yellow">
-              <div class="inner">
-                <h3><%= expired.count %></h3>
-                <p>Expired Orders</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-android-time"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
+
         </div>
-        <!-- /.row -->
 
         <div class="row">
           <div class="col-xs-12">
