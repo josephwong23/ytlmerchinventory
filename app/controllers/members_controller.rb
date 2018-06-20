@@ -30,7 +30,7 @@ class MembersController < ApplicationController
       @member.destroy
       redirect_to :root, notice: 'Member was successfully destroyed.'
     else
-      flash[:alert] = 'Members with active orders can not be deleted. Mark his/hers open orders as returned and try again.'
+      flash[:alert] = 'Members with active orders can not be deleted.'
       redirect_to root_url
     end
   end
