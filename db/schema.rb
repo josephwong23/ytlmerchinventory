@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(version: 20170423144447) do
     t.integer  "quantity"
     t.text     "description"
     t.integer  "category_id"
+    t.integer  "member_division_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "remaining_quantity"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["member_division_id"], name: "index_items_on_member_division_id"
   end
 
   create_table "member_divisions", force: :cascade do |t|

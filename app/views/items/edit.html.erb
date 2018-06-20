@@ -63,6 +63,10 @@
                     <label>Category</label><br/>
                     <%= f.select(:category_id, Category.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Please select/add a category', :selected => @item.category_id}, :id => 'selectize_category') %>
                   </div>
+                  <div class="form-group">
+                    <label>Division Name</label><br/>
+                    <%= f.select(:member_division_id, MemberDivision.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Please select or add a division', :selected => @item.member_division_id}, :id => 'selectize_member_division') %>
+                  </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">

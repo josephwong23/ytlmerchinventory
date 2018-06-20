@@ -33,10 +33,11 @@
                       <th>Category</th>
                       <th>Name</th>
                       <th>Description</th>
+                      <th>Division</th>
                       <th>Quantity</th>
                       <th>Available Qty</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
+                      <th><i class="ion ion-edit"></i></th>
+                      <th><i class="ion ion-trash-b"></i></th>
                       <th></th>
                     </tr>
                   </thead>
@@ -47,10 +48,15 @@
                         <td><%= item.category ? item.category.name : '-'%></td>
                         <td><%= item.name %></td>
                         <td><%= item.description %></td>
+                        <td><%= item.member_division ? item.member_division.name : '-' %></td>
                         <td><%= item.quantity %></td>
                         <td><%= item.remaining_quantity %></td>
-                        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-                        <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure you want to delete this item?' } %></td>
+                        <td><%= link_to '', edit_item_path(item), { class: 'ion ion-edit' } %></td>
+                        <td>
+                          <%= link_to item, method: :delete, data: { confirm: 'Are you sure you want to delete this item?' } do %>
+                            <i class="ion ion-trash-b"></i>
+                          <% end %>
+                        </td>
                         <td><%= link_to 'Create Order', new_order_path(item: item.id) %></td>
                       </tr>
                     <% end %>

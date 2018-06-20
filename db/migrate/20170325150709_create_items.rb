@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.integer :quantity
       t.text :description
       t.references :category, foreign_key: true
+      t.references :member_division, foreign_key: true
 
       t.timestamps
     end

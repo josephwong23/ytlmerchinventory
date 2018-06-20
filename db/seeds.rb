@@ -23,11 +23,3 @@ User.create([{
   remember_created_at: nil,
   member_division_id: MemberDivision.pluck(:id).sample
 }])
-
-User.create([{
-  name: 'Liren Yeo',
-  email: 'liren@not-ytl.com',
-  password: "qwe123",
-  remember_created_at: nil,
-  member_division_id: MemberDivision.pluck(:id).sample
-}])
