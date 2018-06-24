@@ -9,6 +9,32 @@ class OrdersController < ApplicationController
                      expired: Order.expired.all }
   end
 
+  def edit
+  end
+
+  def update
+    new_quantity = order_params["quantity"].to_i
+    old_quantity = @order.quantity
+
+    if @order.item.remaining_quantity < new_quantity - old_quantity
+      redirect_to :back, alert: "Only #{@order.item.remaining_quantity + old_quantity} items available!"
+      return
+    end
+
+    if @order.update(order_params)
+
+      if (old_quantity > new_quantity)
+        @order.item.increment!(:remaining_quantity, old_quantity - new_quantity)
+      elsif (old_quantity < new_quantity)
+        @order.item.decrement!(:remaining_quantity, new_quantity - old_quantity)
+      end
+      redirect_to :root, notice: 'Order was successfully updated.'
+      # send_notification_email_for_action(:create)
+    else
+      render :edit
+    end
+  end
+
   def old
     @inactive = Order.inactive.all
   end
@@ -60,7 +86,11 @@ class OrdersController < ApplicationController
 
   def destroy
     item = @order.item
-    @order.destroy && item.increment!(:remaining_quantity, @order.quantity)
+    if @order.destroy
+      if !@order.delivery_status
+        item.increment!(:remaining_quantity, @order.quantity)
+      end
+    end
 
     redirect_to orders_url, notice: 'Order was successfully destroyed.'
 

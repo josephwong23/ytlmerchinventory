@@ -20,6 +20,16 @@ module UserLogsHelper
         <% end %>
       "
       return ERB.new(html).result(binding).html_safe
+    elsif (version.event == "destroy")
+      html = '
+        <% version.object.split("\n")[1..-1].each do |pair| %>
+          <% prop = pair.split(": ") %>
+          <% if !prop[0].end_with? "_at" %>
+            <s class="text-muted"><%= prop[0] %>: <%= prop[1] %></s><br/>
+          <% end %>
+        <% end %>
+      '
+      return ERB.new(html).result(binding).html_safe
     else
       return "-"
     end

@@ -53,10 +53,10 @@
                 <h3 class="box-title">Orders (<%= active.count %>)</h3>
               </div>
               <div class="box-body">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="order-index-table">
                   <thead>
                     <tr>
-                      <th>Description</th>
+                      <th>Item</th>
                       <th>Qty</th>
                       <th>Order Date</th>
                       <th>Deliver by</th>
@@ -73,9 +73,8 @@
                         <i class="ion ion-loop"></i>
                       </th>
                       -->
-                      <th>
-                        <i class="ion ion-trash-b"></i>
-                      </th>
+                      <th><i class="ion ion-edit"></i></th>
+                      <th><i class="ion ion-trash-b"></i></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -115,6 +114,7 @@
                           <%= link_to '', { :controller => :orders, :action => :renew, :id => order.id }, { class: 'ion ion-loop' } %>
                         </td>
                         -->
+                        <td><%= link_to '', edit_order_path(order), { class: 'ion ion-edit' } %></td>
                         <td>
                           <%= link_to order, method: :delete, data: { confirm: 'Are you sure?' } do %>
                             <i class="ion ion-trash-b"></i>
@@ -169,21 +169,18 @@
       </section>
     </div>
     <%= render 'layouts/footer' %>
-    <%# <script>
-      $.widget.bridge('uibutton', $.ui.button);
-    </script>
+    <script>$.widget.bridge('uibutton', $.ui.button);</script>
     <script>
       $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
+        $('#order-index-table').DataTable({
           "paging": true,
-          "lengthChange": false,
-          "searching": false,
+          // "lengthChange": false,
+          "searching": true,
           "ordering": true,
           "info": true,
           "autoWidth": false
         });
       });
-    </script> %>
+    </script>
   </div>
 </body>
