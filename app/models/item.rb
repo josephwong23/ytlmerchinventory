@@ -6,4 +6,6 @@ class Item < ApplicationRecord
   has_many :members, through: :orders
 
   validates :name, presence: true
+
+  has_paper_trail
 end

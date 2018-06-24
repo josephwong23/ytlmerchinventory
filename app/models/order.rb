@@ -12,6 +12,8 @@ class Order < ApplicationRecord
   scope :inactive, -> { where(status: false) }
   scope :expired, -> { where('deliver_by < ?', Date.today) }
 
+  has_paper_trail
+
   def self.renew(id)
     order = Order.where(id: id)
     order.update(deliver_by: 7.days.from_now)

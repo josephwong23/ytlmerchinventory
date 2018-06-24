@@ -19,6 +19,7 @@ gem 'delayed_job_active_record'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem "selectize-rails"
+gem 'paper_trail'
 
 group :development, :test do
   gem 'byebug', platform: :mri
