@@ -1,0 +1,70 @@
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+
+    <%= render 'layouts/header' %>
+      <div class="content-wrapper">
+        <section class="content-header">
+          <h1>
+            User Activity Logs
+          </h1>
+          <ol class="breadcrumb">
+            <li>
+              <a href="/">
+                <i class="fa fa-home"></i> Home Page</a>
+            </li>
+            <li class="active">User Logs</li>
+          </ol>
+        </section>
+
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Activity Logs (
+                    <%= @versions.count %>)</h3>
+                </div>
+                <div class="box-body">
+                  <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Date/Time</th>
+                        <th>Action</th>
+                        <th>Affected Data</th>
+                        <th>Changes</th>
+                        <th>Done By</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @versions.each do |ver| %>
+                        <tr>
+                          <td><%= ver.id %></td>
+                          <td>
+                            <%= ver.created_at.strftime('%d/%m/%Y, %H:%M') %>
+                          </td>
+                          <td>
+                            <%= ver.event %>
+                          </td>
+                          <td>
+                            <%= ver.item_type %>
+                          </td>
+                          <td>
+                            <%= parse_version(ver) %>
+                          </td>
+                          <td>
+                            <%= ver.whodunnit ? User.find(ver.whodunnit).email : '-' %>
+                          </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+  </div>
+</body>
