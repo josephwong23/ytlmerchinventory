@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users,
-    path_names: { registration: 'yltcc'},
+    path_names: { registration: 'ytlcc'},
     controllers: { registrations: "registrations" }
 
   resources :orders
