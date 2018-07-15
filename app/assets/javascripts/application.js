@@ -22,8 +22,12 @@ $(document).ready(function() {
             text: data.response.name
           })
         },
-        error: function() {
-          toastr.error("The division you're trying to add already existed. Please select from the dropdown.")
+        error: function(err) {
+          if (err.status == 401) {
+            toastr.error("You can only add new division after signing in. Update your divison later using 'Edit Profile'.")
+          } else {
+            toastr.error("The division you're trying to add already existed. Please select from the dropdown.")
+          }
           callback({
             value: null,
             text: 'Try Again'
