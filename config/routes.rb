@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path_names: { registration: 'yltcc'}
   resources :orders
   resources :members
   resources :users
